@@ -1,0 +1,26 @@
+# Auto-generated lock files
+lazy-lock.json
+.lockfile
+
+# Neovim
+.nvim/
+plugin/
+nvim/.netrwhist
+
+# LSP and cache
+.cache/
+.venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.swp
+*.swo
+*~
+.tmp/
+
+# Git
+.git/
+.gitmodules
