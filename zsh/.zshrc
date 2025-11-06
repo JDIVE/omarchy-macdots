@@ -177,9 +177,9 @@ assist() {
   (cd ~/assistant && claude "$@")
 }
 
-# Launch Claude Code inside ~/lyra with --dangerously-skip-permissions, then pop back to where you were
+# Launch Claude Code inside ~/projects/Lyra with --dangerously-skip-permissions, then pop back to where you were
 lyra() {
-  (cd ~/lyra && claude --dangerously-skip-permissions "$@")
+  (cd ~/projects/Lyra && claude --dangerously-skip-permissions "$@")
 }
 
 # Initialize fzf
