@@ -4,6 +4,77 @@ Complete record of all modifications and additions to the omarchy-macdots config
 
 ---
 
+## 2025-11-06: Add Neovim and Tmux Configurations
+
+**Problem**: Neovim and Tmux configurations were not available in omarchy-macdots, only in the macOS dotfiles (`~/projects/macdots`). This meant the Linux Omarchy setup lacked a proper editor and terminal multiplexer configuration, reducing feature parity between systems.
+
+**Solution**: Port both configurations from macdots, achieving unified setup across macOS and Linux.
+
+### Changes Made:
+
+**1. Neovim Configuration Package**
+- **Location**: `nvim/` stow package
+- **Files added**:
+  - `lua/plugins/editor.lua` - vim-tmux-navigator plugin for seamless navigation between nvim and tmux
+  - `lua/plugins/neo-tree.lua` - Neo-tree file explorer with hidden files and gitignored files visible by default
+- **Setup**: `stow -t ~ nvim` creates symlink to `~/.config/nvim`
+- **Features**:
+  - LazyVim as base (already configured)
+  - vim-tmux-navigator: `Ctrl+hjkl` navigation across nvim splits and tmux panes
+  - Neo-tree showing all files including hidden and gitignored
+  - Transparent backgrounds for all UI elements
+  - External theme linked to omarchy theme system
+  - Snacks scrolling disabled for performance
+
+**2. Tmux Configuration Package**
+- **Location**: `tmux/` directory with special symlink handling (not full stow)
+- **Files added**:
+  - `tmux.conf` - Main configuration with:
+    - Ctrl+Space prefix (replaces default Ctrl+B)
+    - Vi-mode keybindings for copy mode
+    - Vim-style pane resizing with hjkl
+    - System clipboard integration with wl-copy (Wayland)
+    - Plugins via tpm plugin manager
+  - `onedark-theme.conf` - OneDark theme (default, with system monitor stats)
+  - `nord-theme.conf` - Nord alternative theme
+  - `.gitignore` - Excludes plugins directory
+- **Setup** (special case - individual symlinks):
+  ```bash
+  mkdir -p ~/.config/tmux/plugins
+  ln -s ~/projects/omarchy-macdots/tmux/tmux.conf ~/.config/tmux/tmux.conf
+  ln -s ~/projects/omarchy-macdots/tmux/onedark-theme.conf ~/.config/tmux/onedark-theme.conf
+  ln -s ~/projects/omarchy-macdots/tmux/nord-theme.conf ~/.config/tmux/nord-theme.conf
+  ```
+- **Why not full stow?**: Tmux needs a real `~/.config/tmux/plugins/` directory where tpm downloads and manages plugins. Stow would symlink the entire directory, breaking tpm's ability to write plugins.
+
+**3. Plugins Added**:
+
+Via tmux plugin manager:
+- `christoomey/vim-tmux-navigator` - Seamless pane/split navigation
+- `tmux-plugins/tmux-resurrect` - Persist sessions after restart
+- `tmux-plugins/tmux-continuum` - Auto-save sessions every 15 minutes
+- `hendrikmi/tmux-cpu-mem-monitor` - CPU and memory stats in status bar
+
+**4. Integration**:
+- Both nvim and tmux include vim-tmux-navigator
+- `Ctrl+hjkl` now works seamlessly across editor splits and terminal panes
+- Theme consistency via omarchy theme system
+- Feature parity between macOS (macdots) and Linux (omarchy-macdots)
+
+### Installation:
+
+See omarchy-macdots README.md for full setup instructions.
+
+### Impact:
+
+- ✅ Full development environment available (editor + terminal multiplexer)
+- ✅ Seamless navigation between nvim and tmux
+- ✅ Session persistence with tmux resurrection
+- ✅ Auto-saving sessions across restarts
+- ✅ Feature parity with macOS setup
+
+---
+
 ## 2025-11-06: Migrate from Bash to Zsh Shell
 
 **Problem**: Currently using Bash as the default shell. Zsh offers better interactive features, superior tab completion, history sharing across sessions, and powerful shell expansion features that are commonly used in modern development workflows.

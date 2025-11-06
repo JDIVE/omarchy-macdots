@@ -48,7 +48,8 @@ Available packages:
 - `zsh/` - Zsh shell configuration (primary shell)
 - `bash/` - Bash shell configuration (fallback)
 - `git/` - Git configuration
-- `nvim/` - Neovim configuration
+- `nvim/` - Neovim configuration with LazyVim, vim-tmux-navigator, and transparent theme
+- `tmux/` - Tmux terminal multiplexer with vim-tmux-navigator and plugin manager
 - `hypr/` - Hyprland window manager
 - `uwsm/` - Wayland session environment
 - `waybar/` - Status bar
@@ -66,6 +67,8 @@ Available packages:
 - **Theme switching**: Eza and other configs maintain symlinks to Omarchy's theme system, so theme switching works seamlessly
 - **Auto-generated files**: Files like `lazy-lock.json` are gitignored to prevent tracking auto-generated content
 - **UWSM environment**: Environment variables are properly sourced for Wayland session
+- **Tmux special case**: Tmux uses individual symlinks instead of full stow (see [CHANGELOG.md](./CHANGELOG.md) for why). Config files point to dotfiles repo, but `~/.config/tmux/plugins/` is a real directory managed by tpm
+- **Vim-Tmux integration**: Neovim and Tmux both include `vim-tmux-navigator` plugin, enabling seamless `Ctrl+hjkl` navigation between editor splits and terminal panes
 
 ### Verification After Installation
 
