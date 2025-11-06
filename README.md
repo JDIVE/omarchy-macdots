@@ -62,6 +62,24 @@ Available packages:
 - `eza/` - ls replacement (preserves Omarchy theme symlinks)
 - And more...
 
+## Extra Packages
+
+Beyond the base Omarchy-Mac installation, you've installed additional packages tracked in `packages.txt`:
+
+```bash
+# Install all extra packages during reinstall
+pacman -S $(cat ~/projects/omarchy-macdots/packages.txt)
+```
+
+The `packages.txt` file documents 40+ explicitly installed packages beyond base Omarchy-Mac, including:
+- Shells & terminal tools (zsh, tmux, cliphist)
+- Editors (zed, vim, nano)
+- Development tools (openssh, uv)
+- System utilities (net-tools, networkmanager)
+- Alternative package managers (paru)
+
+See `packages.txt` for the complete annotated list.
+
 ### Notes
 
 - **Theme switching**: Eza and other configs maintain symlinks to Omarchy's theme system, so theme switching works seamlessly
@@ -88,3 +106,35 @@ hyprctl version
 Just edit files in the repo—changes take effect immediately due to symlinks.
 
 Commit changes to git to track your customizations.
+
+## Reinstall from Scratch
+
+If you need to replicate this setup on a new machine:
+
+1. **Install Asahi Linux** and **Omarchy-Mac** following standard procedures
+2. **Clone this dotfiles repo:**
+   ```bash
+   git clone https://github.com/jamie/omarchy-macdots ~/projects/omarchy-macdots
+   ```
+3. **Install extra packages:**
+   ```bash
+   pacman -S $(cat ~/projects/omarchy-macdots/packages.txt)
+   ```
+4. **Apply dotfile configurations:**
+   ```bash
+   cd ~/projects/omarchy-macdots
+   stow -t ~ .
+   ```
+5. **Verify everything:**
+   ```bash
+   # Check symlinks are created
+   ls -la ~/.config/nvim/init.lua
+
+   # Test Hyprland
+   hyprctl version
+
+   # Verify shell
+   echo $SHELL
+   ```
+
+You're now at feature parity with your previous installation. All customizations, keybindings, and environment are restored from git.

@@ -1,0 +1,54 @@
+# Extra packages installed beyond omarchy-mac base installation
+# Generated: 2025-11-06
+
+# Development
+neovim
+zed
+openssh
+git
+stow
+
+# Shells & Terminal
+zsh
+zsh-autosuggestions
+zsh-syntax-highlighting
+tmux
+
+# System utilities
+nano
+vim
+vi
+which
+net-tools
+netctl
+dhcpcd
+networkmanager
+man-db
+cliphist
+
+# Alternative package managers
+paru
+uv
+
+# Browsers & Media
+chromium
+
+# System (likely from Asahi Linux)
+asahi-meta
+asahi-scripts
+asahi-alarm-keyring
+archlinuxarm-keyring
+m1n1
+uboot-asahi
+
+# Graphics & Wayland
+aquamarine
+glaze
+hyprland-git
+hyprland-protocols
+hyprcursor
+libliftoff
+xorg-xwayland
+xcb-util-errors
+seatd
+tomlplusplus
