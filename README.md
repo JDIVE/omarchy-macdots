@@ -26,10 +26,10 @@ mkdir -p ~/.config/zed
 mkdir -p ~/.config/systemd/user
 
 # Dry-run to see what will be created
-stow --simulate --verbose .
+stow --simulate --verbose -t ~ .
 
 # Actually stow all packages
-stow .
+stow -t ~ .
 ```
 
 ### Package Structure
@@ -37,15 +37,16 @@ stow .
 Each directory is a stow package. You can selectively install:
 
 ```bash
-# Install just Hyprland and shell configs
-stow hypr bash
+# Install just Hyprland and zsh
+stow -t ~ hypr zsh
 
 # Install everything
-stow .
+stow -t ~ .
 ```
 
 Available packages:
-- `bash/` - Shell configuration
+- `zsh/` - Zsh shell configuration (primary shell)
+- `bash/` - Bash shell configuration (fallback)
 - `git/` - Git configuration
 - `nvim/` - Neovim configuration
 - `hypr/` - Hyprland window manager
