@@ -139,7 +139,6 @@ elif command -v xclip &> /dev/null; then
 fi
 
 # Quick folder navigation
-alias dev="cd ~/Development"
 alias docs="cd ~/Documents"
 alias dl="cd ~/Downloads"
 alias projects="cd ~/projects"
@@ -170,11 +169,6 @@ extract() {
   else
     echo "'$1' is not a valid file"
   fi
-}
-
-# Launch Claude Code inside ~/assistant, then pop back to where you were
-assist() {
-  (cd ~/assistant && claude "$@")
 }
 
 # Launch Claude Code inside ~/projects/Lyra with --dangerously-skip-permissions, then pop back to where you were
