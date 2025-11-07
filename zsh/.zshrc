@@ -254,6 +254,7 @@ if [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.z
 fi
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 
 # Initialize Starship prompt if installed
 if command -v starship > /dev/null 2>&1; then
